@@ -1,0 +1,36 @@
+//WAP to implement Linear Regression
+
+#include <iostream>
+#define S 50
+
+using namespace std;
+int main()
+{
+	int n,i;
+	float x[S],y[S],sumX=0, sumX2 = 0, sumY = 0,sumXY = 0,a,b;
+	cout <<"How many data points to enter ?";
+	cin>>n;
+	cout<<"Enter the data : "<<endl;
+	
+	for(i=1;i<=n;i++)
+	{
+		cout<<"x["<< i <<"] = ";
+		cin>>x[i];
+		cout<<"y["<< i <<"] = ";
+		cin>>y[i];
+		
+	}
+	for(i=1;i<=n;i++)
+	{
+		sumX = sumX + x[i];
+		sumX2 = sumX2 + x[i]*x[i];
+		sumY = sumY + y[i];
+		sumXY = sumXY + x[i]*y[i];
+	}
+	b = (n*sumXY - sumX*sumY)/(n*sumX2-sumX*sumX);
+	a = (sumY - b*sumX)/n;
+	
+	cout<<"Calculated value of a is "<<a<<" and b is "<<b<<endl;
+	cout<<"Equation of best fit is: y = "<<a<<" + "<<b<<"x";
+	
+}
